@@ -7,4 +7,4 @@ Futura Bold Oblique tributes to Barbara Kruger.
 
 <img width="788" alt="horizontal" src="https://github.com/user-attachments/assets/79c2aad4-eb90-4de5-bece-63fd737da94f" />
 
-Tested: Work with Epson TM-T88V on MacOS 14
+Tested with Epson TM-T88V on MacOS 14
