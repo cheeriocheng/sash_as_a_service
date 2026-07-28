@@ -28,7 +28,7 @@ DPI = 180
 
 # Letter height is always maximized to fill the ribbon; the message only
 # shrinks below that if it would otherwise print longer than this (cm).
-DISPLAY_LENGTH_CM = 75
+DISPLAY_LENGTH_CM = 65
 
 # Kruger' Oblique Futura Bold
 FONT_CANDIDATES = [
