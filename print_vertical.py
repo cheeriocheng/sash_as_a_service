@@ -30,11 +30,15 @@ DPI = 180
 # shrinks below that if it would otherwise print longer than this (cm).
 DISPLAY_LENGTH_CM = 65
 
-# Kruger' Oblique Futura Bold
+# Kruger' Oblique Futura Bold. macOS paths first, then common Linux bold
+# sans fallbacks (e.g. for the DevTerm), in roughly closest-match order.
 FONT_CANDIDATES = [
     ("/System/Library/Fonts/Supplemental/Futura.ttc", 2),  # Futura Bold
     ("/System/Library/Fonts/Supplemental/Arial Bold Italic.ttf", 0),
     ("/System/Library/Fonts/Supplemental/HelveticaNeue.ttc", 0),
+    ("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 0),
+    ("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 0),
+    ("/usr/share/fonts/truetype/freefont/FreeSansBold.ttf", 0),
 ]
 
 SHEAR_FACTOR = 0.22  # italic slant amount
@@ -50,7 +54,12 @@ def load_font(size):
             return ImageFont.truetype(path, size, index=index)
         except OSError:
             continue
-    return ImageFont.load_default(size=size)
+    try:
+        return ImageFont.load_default(size=size)
+    except TypeError:
+        # Pillow < 9.2 (e.g. the one bundled with Python 3.7) doesn't accept
+        # a size here -- falls back to a small fixed-size bitmap font.
+        return ImageFont.load_default()
 
 
 def measure(font, text):
