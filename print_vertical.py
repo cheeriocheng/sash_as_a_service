@@ -165,6 +165,10 @@ if __name__ == "__main__":
     if args.preview:
         print_terminal_preview(image)
     else:
-        p = Usb(VENDOR_ID, PRODUCT_ID, profile=PROFILE)
+        try:
+            p = Usb(VENDOR_ID, PRODUCT_ID, profile=PROFILE)
+        except TypeError:
+            # Older python-escpos versions don't accept a profile kwarg.
+            p = Usb(VENDOR_ID, PRODUCT_ID)
         p.image(image)
         # p.cut()
