@@ -8,3 +8,11 @@ Futura Bold Oblique tributes to Barbara Kruger.
 <img width="788" alt="horizontal" src="https://github.com/user-attachments/assets/79c2aad4-eb90-4de5-bece-63fd737da94f" />
 
 Tested with Epson TM-T88V on MacOS 14
+
+
+--
+to run on clockwork DevTerm 
+
+echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="04b8", ATTR{idProduct}=="0202", MODE="0666"' | sudo tee /etc/udev/rules.d/99-escpos.rules
+
+sudo udevadm control --reload && sudo udevadm trigger
