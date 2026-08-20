@@ -237,15 +237,18 @@ if __name__ == "__main__":
         help="White text on a black bar (Kruger negative).",
     )
     parser.add_argument(
+        "-p",
         "--preview",
         action="store_true",
         help="Render in the terminal instead of printing -- no printer needed.",
     )
     parser.add_argument(
+        "-l",
         "--length",
         type=float,
         default=DISPLAY_LENGTH_CM,
-        help=f"Max printed length in cm (default: {DISPLAY_LENGTH_CM}).",
+        metavar="CM",
+        help=f"Max length in cm of the text body (default: {DISPLAY_LENGTH_CM}).",
     )
     args = parser.parse_args()
 
